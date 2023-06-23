@@ -1,0 +1,28 @@
+// 900px
+$breakpoint: 56.25rem;
+
+.users {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  padding: 1rem;
+
+  @media screen and (max-width: $breakpoint) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    border: 0.3rem solid skyblue;
+    padding: 3rem;
+
+    &:hover {
+      background-color: #5c6bc0;
+      color: white;
+    }
+  }
+}

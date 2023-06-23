@@ -1,0 +1,79 @@
+<form [formGroup]="form" (submit)="onSubmit()" class="form" *ngIf="!submittedSuccessfully">
+    <div>
+        <div class="input-wrapper">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" formControlName="firstName">
+            <div *ngIf="!form.get('firstName')?.value && form.get('firstName')?.touched" class="error-message">
+                {{requiredErrorMessage}}
+            </div>
+            <div *ngIf="form.controls['firstName'].hasError('hasSpecialChar')" class="error-message">
+                {{specialCharsErrorMessage}}
+            </div>
+        </div>
+
+        <mat-divider></mat-divider>
+    </div>
+
+    <div>
+        <div class="input-wrapper">
+            <label for="familyName">Family Name</label>
+            <input type="text" id="familyName" formControlName="familyName">
+            <div *ngIf="!form.get('familyName')?.value && form.get('familyName')?.touched" class="error-message">
+                {{requiredErrorMessage}}
+            </div>
+            <div *ngIf="form.controls['familyName'].hasError('hasSpecialChar')" class="error-message">
+                {{specialCharsErrorMessage}}
+            </div>
+        </div>
+
+        <mat-divider></mat-divider>
+    </div>
+
+    <div>
+        <div class="input-wrapper">
+            <label for="job">Job</label>
+            <input type="text" id="job" formControlName="job">
+            <div *ngIf="!form.get('job')?.value && form.get('job')?.touched" class="error-message">
+                {{requiredErrorMessage}}
+            </div>
+            <div *ngIf="form.controls['job'].hasError('hasSpecialChar')" class="error-message">
+                {{specialCharsErrorMessage}}
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+
+    </div>
+
+    <div>
+        <div class="input-wrapper">
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender" formControlName="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+
+    <div>
+        <div class="input-wrapper">
+            <label for="age">Age</label>
+            <select id="age" formControlName="age" (change)="onAgeSelectionChange($event)">
+                <option *ngIf="!(form.controls['age'].value > 0)">Please select</option>
+                <option *ngFor="let age of ageOptions" value="{{age}}">{{ age }}</option>
+            </select>
+            <div *ngIf="form.controls['age'].hasError('required')" class="error-message">
+                {{requiredErrorMessage}}
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+
+    <button type="submit" mat-raised-button color="primary">Submit</button>
+    <a mat-stroked-button routerLink="">Cancel</a>
+</form>
+
+<div class="success" *ngIf="submittedSuccessfully">
+    <p>Success! Redirecting to Home page...</p>
+    <mat-spinner></mat-spinner>
+</div>

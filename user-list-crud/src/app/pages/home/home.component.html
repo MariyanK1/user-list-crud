@@ -1,0 +1,14 @@
+<div class="users">
+    <div class="user" *ngFor="let user of users$ | async">
+        <div class="id">ID - <b>{{user.id}}</b>
+        </div>
+        <div class="name">Name: <b>{{user.firstName}}</b></div>
+        <div class="familyName">familyName: <b>{{user.familyName}}</b></div>
+        <div class="age">age: <b>{{user.age}}</b></div>
+        <div class="gender">gender: <b>{{user.gender}}</b></div>
+        <div class="job">job: <b>{{user.job}}</b></div>
+        <a mat-raised-button color="accent" routerLink="{{'edit-user/' + user.id}}">Edit</a>
+        <a mat-raised-button color="accent" (click)="onDelete(user.id)">Delete</a>
+    </div>
+    <p *ngIf="!(users$ | async)?.length">No users =(</p>
+</div>

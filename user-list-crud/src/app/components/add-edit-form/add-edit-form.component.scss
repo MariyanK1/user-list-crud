@@ -1,0 +1,25 @@
+.form {
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+
+  .error-message {
+    color: red;
+    text-align: center;
+  }
+
+  .input-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+
+.success {
+  font-size: 2.5rem;
+  color: green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
